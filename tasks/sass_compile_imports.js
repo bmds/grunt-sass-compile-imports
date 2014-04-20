@@ -20,7 +20,8 @@ module.exports = function(grunt) {
       var files       = this.filesSrc;
       var options     = this.options({
           quiet:   false,
-          replace: false
+          replace: false,
+          importPath: false
       });
 
       // Check that the destination file exists
@@ -36,6 +37,12 @@ module.exports = function(grunt) {
 
               // Remove the .scss extension
               filepath = filepath.replace('.scss', '');
+              
+              // If set, use importPath rather than src path
+              if(options.importPath !== false) {
+                  var srcPath = filepath.split('/'),
+                  filepath = options.importPath + srcPath[srcPath.length - 1];
+              }
               // Add the current file to the list
               importFiles.push('@import "' + filepath + '";');
           });
