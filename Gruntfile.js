@@ -31,21 +31,34 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     sass_compile_imports: {
       default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+        target: 'test/_partials.scss',
+        src: ['test/fixtures/testing', 'test/fixtures/123']
       },
       custom_options: {
         options: {
-          separator: ': ',
-          punctuation: ' !!!',
+            removeExtension: false
         },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+        target: 'test/_partials.scss',
+        files: [{
+            expand: true,
+            cwd   : 'test/fixtures/',
+            src   : ['**/*.scss']
+        }]
       },
+      replace_path: {
+        options: {
+            replacePath: {
+                pattern: 'test/fixtures',
+                replace: '../_styles'
+            }
+        },
+        target: 'test/_partials.scss',
+        files: [{
+            expand: true,
+            cwd   : 'test/fixtures/',
+            src   : ['**/*.scss']
+        }]
+      }
     },
 
     // Unit tests.
@@ -62,12 +75,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-debug-task');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
   grunt.registerTask('test', ['clean', 'sass_compile_imports', 'nodeunit']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask('default', ['jshint']);
 
 };

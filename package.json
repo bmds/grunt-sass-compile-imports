@@ -27,10 +27,11 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "~0.6.0",
+    "grunt": "~0.4.0",
     "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt": "~0.4.0"
+    "grunt-debug-task": "^0.1.5"
   },
   "peerDependencies": {
     "grunt": "~0.4.0"
