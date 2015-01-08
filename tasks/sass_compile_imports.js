@@ -57,7 +57,7 @@ module.exports = function(grunt) {
           // Add the current file to the list
           importFiles.push('@import "' + filepath + '";');
       });
-      var importedStr = 'Imported: ' + files.length + ' files'
+      var importedStr = 'Imported: ' + files.length + ' files';
       grunt.log.writeln(importedStr.cyan);
 
       // Merge the import files
