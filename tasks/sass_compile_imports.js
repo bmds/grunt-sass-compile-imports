@@ -25,6 +25,10 @@ module.exports = function(grunt) {
           importPath:      false
       });
 
+      if(options.importPath !== false && options.importPath.charAt(options.importPath.length - 1) !== '/') {
+        options.importPath += '/';
+      }
+
       // Check that the destination file exists
       if(!grunt.file.exists(this.data.target)) {
           grunt.file.write(this.data.target, '');
@@ -41,7 +45,7 @@ module.exports = function(grunt) {
 
           // If set, use importPath rather than src path
           if(options.importPath !== false) {
-              var srcPath = filepath.split('/'),
+              var srcPath = filepath.split('/');
               filepath = options.importPath + srcPath[srcPath.length - 1];
           }
 
