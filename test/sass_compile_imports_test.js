@@ -67,5 +67,14 @@ exports.sass_compile_imports = {
     test.equal(actual, expected, 'Always add a trailing slash if one isn\'t set');
 
     test.done();
+  },
+  custom_header: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/_custom-header.scss');
+    var expected = grunt.file.read('test/expected/custom_header');
+    test.equal(actual, expected, 'A custom header should have been used');
+
+    test.done();
   }
 };

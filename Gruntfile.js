@@ -70,6 +70,17 @@ module.exports = function(grunt) {
         },
         target: 'tmp/_import-path-slash.scss',
         files: filesConfig
+      },
+      custom_header: {
+        options: {
+          header: [
+            '// Custom header',
+            '// DO NOT TOUCH',
+            ''
+          ]
+        },
+        target: 'tmp/_custom-header.scss',
+        files: filesConfig
       }
     },
 
