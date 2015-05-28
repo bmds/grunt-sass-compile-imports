@@ -21,7 +21,8 @@ module.exports = function(grunt) {
       var options     = this.options({
           replacePath:     false,
           quiet:           false,
-          removeExtension: true
+          removeExtension: true,
+          importPath:      false
       });
 
       // Check that the destination file exists
@@ -36,6 +37,12 @@ module.exports = function(grunt) {
       files.forEach(function (filepath) {
           if (!options.quiet) {
               grunt.log.writeln('Importing: ' + filepath.cyan);
+          }
+
+          // If set, use importPath rather than src path
+          if(options.importPath !== false) {
+              var srcPath = filepath.split('/'),
+              filepath = options.importPath + srcPath[srcPath.length - 1];
           }
 
           // Remove the .scss extension
@@ -57,6 +64,7 @@ module.exports = function(grunt) {
           // Add the current file to the list
           importFiles.push('@import "' + filepath + '";');
       });
+
       var importedStr = files.length + ' files';
       grunt.log.writeln('Imported: ' + importedStr.cyan);
 
