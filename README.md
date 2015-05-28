@@ -208,13 +208,14 @@ This will generate the partial file in the following way:
 @import "path/to/partial/fonts";
 ```
 
-### Usage Examples
-
-Coming soon
-
-
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
-## Release History
-_(Nothing yet)_
+## Contributors
+- [Naomi Guyer](https://github.com/adrexia)
+- [Peter deHaan](https://github.com/pdehaan)
+- [Branny](https://github.com/andrewbrandwood)
+
+## History
+0.2.x - Several options added
+0.1.x - Initial version
