@@ -23,26 +23,49 @@ var grunt = require('grunt');
 */
 
 exports.sass_compile_imports = {
-  setUp: function(done) {
-    // setup here if necessary
-    done();
-  },
   default_options: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/default_options');
+    var actual = grunt.file.read('tmp/_default.scss');
     var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    test.equal(actual, expected, 'Default options should function correctly.');
 
     test.done();
   },
-  custom_options: function(test) {
+  keep_extension: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
+    var actual = grunt.file.read('tmp/_with-extension.scss');
+    var expected = grunt.file.read('test/expected/keep_extension');
+    test.equal(actual, expected, 'Extensions should be kept.');
 
     test.done();
   },
+  replace_path: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/_replaced-path.scss');
+    var expected = grunt.file.read('test/expected/replace_path');
+    test.equal(actual, expected, 'Path replaced with setting.');
+
+    test.done();
+  },
+  import_path: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/_import-path.scss');
+    var expected = grunt.file.read('test/expected/import_path');
+    test.equal(actual, expected, 'Import paths should be used');
+
+    test.done();
+  },
+  import_path_slash: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/_import-path-slash.scss');
+    var expected = grunt.file.read('test/expected/import_path');
+    test.equal(actual, expected, 'Always add a trailing slash if one isn\'t set');
+
+    test.done();
+  }
 };

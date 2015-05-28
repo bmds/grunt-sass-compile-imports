@@ -8,6 +8,12 @@
 
 'use strict';
 
+var filesConfig = [{
+    expand: true,
+    cwd   : 'test/fixtures/',
+    src   : ['**/*.scss']
+}];
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -31,19 +37,15 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     sass_compile_imports: {
       default_options: {
-        target: 'test/_partials.scss',
-        src: ['test/fixtures/testing', 'test/fixtures/123']
+        target: 'tmp/_default.scss',
+        files: filesConfig
       },
-      custom_options: {
+      keep_extension: {
         options: {
             removeExtension: false
         },
-        target: 'test/_partials.scss',
-        files: [{
-            expand: true,
-            cwd   : 'test/fixtures/',
-            src   : ['**/*.scss']
-        }]
+        target: 'tmp/_with-extension.scss',
+        files: filesConfig
       },
       replace_path: {
         options: {
@@ -52,12 +54,22 @@ module.exports = function(grunt) {
                 replace: '../_styles'
             }
         },
-        target: 'test/_partials.scss',
-        files: [{
-            expand: true,
-            cwd   : 'test/fixtures/',
-            src   : ['**/*.scss']
-        }]
+        target: 'tmp/_replaced-path.scss',
+        files: filesConfig
+      },
+      import_path: {
+        options: {
+          importPath: '../another/location/'
+        },
+        target: 'tmp/_import-path.scss',
+        files: filesConfig
+      },
+      import_path_no_slash: {
+        options: {
+          importPath: '../another/location'
+        },
+        target: 'tmp/_import-path-slash.scss',
+        files: filesConfig
       }
     },
 
