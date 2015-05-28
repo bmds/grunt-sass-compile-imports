@@ -46,6 +46,7 @@ This will generate a file called _partials.scss in a directory named sass. The c
 
 @import "path/to/partial/variables";
 @import "path/to/partial/fonts";
+```
 
 ### Options
 
