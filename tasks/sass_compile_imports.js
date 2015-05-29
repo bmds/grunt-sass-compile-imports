@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 
 		var importFiles = options.header;
 
-		function importFile(filepath) {
+		function importFileFromPath(filepath) {
 			if (!options.quiet) {
 				grunt.log.writeln('Importing: ' + filepath.cyan);
 			}
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
 		}
 
 		// Loop through the files
-		files.forEach(importFile);
+		files.forEach(importFileFromPath);
 
 		var importedStr = files.length + ' files';
 		grunt.log.writeln('Imported: ' + importedStr.cyan);
