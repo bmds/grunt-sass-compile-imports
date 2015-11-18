@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 
 		function importFileFromPath(filepath) {
 			if (!options.quiet) {
-				grunt.log.writeln('Importing: ' + filepath.cyan);
+				grunt.log.writeln('Importing: ' + (filepath).cyan);
 			}
 
 			// If set, use importPath rather than src path
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
 		files.forEach(importFileFromPath);
 
 		var importedStr = files.length + ' files';
-		grunt.log.writeln('Imported: ' + importedStr.cyan);
+		grunt.log.writeln('Imported: ' + (importedStr).cyan);
 
 		// Merge the import files
 		importFiles = importFiles.join('\n');
