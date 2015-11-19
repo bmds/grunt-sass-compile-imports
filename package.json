@@ -1,7 +1,7 @@
 {
   "name": "grunt-sass-compile-imports",
   "description": "Create an import file by scanning a directory for SASS files",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/bmds/grunt-sass-compile-imports",
   "author": {
     "name": "Barney Scott",
